@@ -10,7 +10,7 @@ export const createApp = ({playerModel}) => {
     app.use(cors())
 
     app.get('/', (req, res) =>{
-        res.json({message: "hola mundo!"})
+        res.json({message: "hola mundo: api nba!"})
     })
 
     app.use('/players', createPlayerRouter({playerModel}))
