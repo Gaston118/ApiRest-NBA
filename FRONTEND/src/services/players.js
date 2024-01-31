@@ -1,9 +1,15 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3001/players'
+const baseURL = 'http://localhost:3001'
 
-export function getAll () {
-  const request = axios.get(baseUrl)
-  return request.then(response => response.data)
+const api = axios.create({
+  baseURL: baseURL,
+});
+
+export async function getAll () {
+  const request = api.get('/players')
+  const response = await request;
+  console.log(response.data)
+  return response.data;
 }
 
 

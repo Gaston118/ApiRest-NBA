@@ -37,9 +37,18 @@ const teams = [
 ]
 
 const App = () => {
+  const [players, setPlayers] = useState(null)
+  const [selectedTeam, setSelectedTeam] = useState(null);
+
+  useEffect(() => {
+    getAll().then(players =>
+      setPlayers( players )
+    )  
+  }, [])
 
   const handleLogoClick = (teamName) => {
-    console.log(`Clic en el logo de ${teamName}`);
+    console.log(`${teamName}`);
+    setSelectedTeam(teamName);
   };
 
   return (
@@ -54,6 +63,19 @@ const App = () => {
           </div>
         ))}
       </div>
+
+      {selectedTeam && (
+        <div>
+          <h2>Jugadores de {selectedTeam}</h2>
+          <ul>
+            {players
+              .filter((player) => player.team === selectedTeam)
+              .map((player) => (
+                <li key={player.id}>{player.name}</li>
+              ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
