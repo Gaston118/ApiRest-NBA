@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import './App.css'
 import { getAll , getByTeam } from './services/players';
 import TeamLogo from './components/TeamLogo';
+import PlayersList from './components/PlayersList';
+import './App.css'
 
 const teams = [
   'Atlanta Hawks',
@@ -46,10 +47,18 @@ const App = () => {
     )  
   }, [])
 
-  const handleLogoClick = (teamName) => {
-    console.log(`${teamName}`);
-    setSelectedTeam(teamName);
-    getByTeam(teamName)
+  const handleLogoClick = async (teamName) => {
+    if(teamName !== selectedTeam){
+      console.log(`${teamName}`);
+      setSelectedTeam(teamName);
+      //USO EL getByTeam 
+      const teamPlayers = await getByTeam(teamName)
+      setPlayers(teamPlayers)
+    }
+    else
+    {
+      setSelectedTeam('')
+    }
   };
 
   return (
@@ -58,24 +67,23 @@ const App = () => {
       <h1 className='titulo'>NBA API</h1>
 
       <div className="team-grid">
-        {teams.map((team) => (
+        {!selectedTeam && teams.map((team) => (
           <div key={team} className="card">
             <TeamLogo teamName={team} onClick={handleLogoClick} />
           </div>
         ))}
+
+        {selectedTeam && 
+          <div key={selectedTeam} className="card">
+          <div className='selected-team'>
+          <TeamLogo teamName={selectedTeam} onClick={handleLogoClick} />
+          </div>
+        </div>
+        }
       </div>
 
       {selectedTeam && (
-        <div>
-          <h2>Jugadores de {selectedTeam}</h2>
-          <ul>
-            {players
-              .filter((player) => player.team === selectedTeam)
-              .map((player) => (
-                <li key={player.id}>{player.name}</li>
-              ))}
-          </ul>
-        </div>
+        <PlayersList team={selectedTeam} players={players} />
       )}
     </div>
   );
