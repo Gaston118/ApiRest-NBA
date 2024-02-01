@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import { getAll } from './services/players';
+import { getAll , getByTeam } from './services/players';
 import TeamLogo from './components/TeamLogo';
 
 const teams = [
@@ -49,6 +49,7 @@ const App = () => {
   const handleLogoClick = (teamName) => {
     console.log(`${teamName}`);
     setSelectedTeam(teamName);
+    getByTeam(teamName)
   };
 
   return (

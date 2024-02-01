@@ -13,7 +13,7 @@ export const createApp = ({playerModel}) => {
         res.json({message: "hola mundo!"})
     })
 
-    app.use('/players', createPlayerRouter({playerModel}))
+    app.use('/api/players', createPlayerRouter({playerModel}))
 
     const PORT = process.env.PORT ?? 3001
 
