@@ -8,6 +8,7 @@
     "dev:local": "nodemon server/server-local.js",
     "dev:mongo": "nodemon server/server-mongo.js",
     "start:local": "node server/server-local.js",
+    "start:mongo": "node server/server-mongo.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Gastón Capdevila",

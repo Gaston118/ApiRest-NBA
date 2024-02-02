@@ -49,9 +49,16 @@
 
   .equipo{
     color: rgb(28, 95, 238);
+    font-family: 'Fira Sans', sans-serif;
   }
 
   .position{
     font-family: 'Fira Sans', sans-serif;
+  }
+
+  .h2{
+    margin-left: 21px;
+    font-size: 40px;
+    font-family: 'Ubuntu', sans-serif;
   }
   
