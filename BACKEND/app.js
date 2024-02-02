@@ -8,6 +8,7 @@ export const createApp = ({playerModel}) => {
     app.disable('x-powered-by')
     app.use(json())
     app.use(cors())
+    app.use(express.static('dist'))
 
     app.get('/', (req, res) =>{
         res.json({message: "hola mundo!"})
