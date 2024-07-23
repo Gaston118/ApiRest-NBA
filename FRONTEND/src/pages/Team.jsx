@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getByTeam } from '../services/players';
-import PlayersList from '../components/PlayersList';
+import PlayersList from '../components/Players/PlayersList';
 
 const Team = () => {
   const { teamName } = useParams();
@@ -21,9 +21,11 @@ const Team = () => {
   }, [teamName]);
 
   return (
-    <div>
-      <h2>{teamName}</h2>
-      <PlayersList players={playersTeam} />
+    <div className='relative flex flex-col items-center'>
+      <div className='absolute inset-0 bg-cover bg-center h-screen' style={{ backgroundImage: "url('/assets/backgrounds/nba9.webp')", opacity: 0.5 }}></div>
+      <div className='relative flex flex-col items-center w-full flex-grow'>
+        <PlayersList team={teamName} players={playersTeam} />
+      </div>
     </div>
   );
 };

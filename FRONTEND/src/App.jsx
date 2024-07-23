@@ -1,19 +1,22 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home'
-import Team from './pages/Team'
+
 import TopNavbar from './components/Navbar/TopNavbar';
 import Footer from './components/FooterComp/Footer';
+import AppHome from './pages/AppHome';
+import Team from './pages/Team'
 import './App.css';
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-r from-blue-900 via-blue-800 to-red-800">
+    <div className="h-screen w-screen flex flex-col bg-slate-600">
       <Router>
-        <TopNavbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/:teamName" element={<Team />} />
-        </Routes>
+        <TopNavbar />        
+        <div className="flex-grow">
+          <Routes>
+            <Route path='/' element={<AppHome />} />
+            <Route path="/:teamName" element={<Team />} />
+          </Routes>
+        </div>
         <Footer />
       </Router>
     </div>

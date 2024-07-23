@@ -1,0 +1,7 @@
+.text-shadow {
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5); /* Ajusta el tamaño, el difuminado y el color según lo necesites */
+  }
+  
+  .shadow-custom {
+    text-shadow: 1px 1px 3px rgba(255, 251, 251, 0.7);
+  }
