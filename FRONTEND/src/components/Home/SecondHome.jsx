@@ -20,7 +20,7 @@ const SecondHome = () => {
             {teamsWest.map((teamw) => (
               <div key={teamw}>
                 <div className='bg-slate-200 rounded-md w-32 h-32 flex justify-center items-center transition-transform transform hover:scale-95 hover:border-2 hover:border-black hover:rounded-custom'>
-                  <Link to={`/${teamw}`} className='w-full h-full'>
+                  <Link to={`/team/${teamw}`} className='w-full h-full'>
                     <TeamLogo teamName={teamw} />
                   </Link>
                 </div>
